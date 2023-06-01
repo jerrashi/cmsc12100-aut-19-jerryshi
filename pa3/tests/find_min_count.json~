@@ -1,0 +1,20 @@
+[
+    {"items": [],
+     "min_count": 1,
+     "expected": []},
+
+    {"items": ["A", "A", "A"],
+     "min_count": 3,
+     "expected": [["A", 3]]},
+
+    {"items": ["A", "A", "A"],
+     "min_count": 4,
+     "expected": []},
+
+    {"items": ["A", "B", "C", "A", "A", "B", "A", "C", "A", "D"],
+     "min_count": 2,
+     "expected": [["A", 5], ["B", 2], ["C", 2]]}
+]
+
+
+

@@ -1,0 +1,282 @@
+[
+    {
+        "tweets": [
+            {
+                "abridged_text": "the dog a dog"
+            }
+        ],
+        "n": 2,
+        "min_count": 1,
+        "purpose": "Test Stop word removal and ordering",
+        "expected": [
+            [
+                [
+                    "dog",
+                    "dog"
+                ],
+                1
+            ]
+        ]
+    },
+    {
+        "tweets": [
+            {
+                "abridged_text": "Dog dog"
+            }
+        ],
+        "n": 2,
+        "min_count": 1,
+        "purpose": "Test handling cases",
+        "expected": [
+            [
+                [
+                    "dog",
+                    "dog"
+                ],
+                1
+            ]
+        ]
+    },
+    {
+        "tweets": [
+            {
+                "abridged_text": "dog, dog; :dog ...dog..."
+            }
+        ],
+        "n": 2,
+        "min_count": 1,
+        "purpose": "Test punctuation removal",
+        "expected": [
+            [
+                [
+                    "dog",
+                    "dog"
+                ],
+                3
+            ]
+        ]
+    },
+    {
+        "tweets": [
+            {
+                "abridged_text": "@Dog dog http://dog.html"
+            }
+        ],
+        "n": 2,
+        "min_count": 1,
+        "purpose": "Test to see if prefix filtering is done properly",
+        "expected": []
+    },
+    {
+        "tweets": [
+            {
+                "abridged_text": "dog's are good"
+            }
+        ],
+        "n": 2,
+        "min_count": 1,
+        "purpose": "check mid-word punctuation remains",
+        "expected": [
+            [
+                [
+                    "are",
+                    "good"
+                ],
+                1
+            ],
+            [
+                [
+                    "dog's",
+                    "are"
+                ],
+                1
+            ]
+        ]
+    },
+    {
+        "tweets": [
+            {
+                "abridged_text": "dog ...... dog ;;;; dog :;\" "
+            }
+        ],
+        "n": 2,
+        "min_count": 1,
+        "purpose": "Empty string removal",
+        "expected": [
+            [
+                [
+                    "dog",
+                    "dog"
+                ],
+                2
+            ]
+        ]
+    },
+    {
+        "tweets": [
+            {
+                "abridged_text": ";"
+            }
+        ],
+        "n": 2,
+        "min_count": 1,
+        "purpose": "Empty string after cleaning",
+        "expected": []
+    },
+    {
+        "tweets": [
+            {
+                "abridged_text": "the cat in the hat"
+            },
+            {
+                "abridged_text": "don't let the cat on the hat"
+            },
+            {
+                "abridged_text": "the cat's hat"
+            },
+            {
+                "abridged_text": "the hat cat"
+            }
+        ],
+        "n": 2,
+        "min_count": 2,
+        "purpose": " Test to end-to-end functionality",
+        "expected": [
+            [
+                [
+                    "cat",
+                    "hat"
+                ],
+                2
+            ]
+        ]
+    },
+    {
+        "tweets": [
+            {
+                "abridged_text": "the cat in the hat"
+            },
+            {
+                "abridged_text": "don't let the cat on the hat"
+            },
+            {
+                "abridged_text": "the cat's hat"
+            },
+            {
+                "abridged_text": "the hat cat"
+            }
+        ],
+        "n": 3,
+        "min_count": 2,
+        "purpose": " Test to end-to-end functionality",
+        "expected": []
+    },
+    {
+        "tweets": [
+            {
+                "abridged_text": "the cat in the hat"
+            },
+            {
+                "abridged_text": "don't let the cat on the hat"
+            },
+            {
+                "abridged_text": "the cat's hat"
+            },
+            {
+                "abridged_text": "the hat cat"
+            }
+        ],
+        "n": 4,
+        "min_count": 1,
+        "purpose": " Test to end-to-end functionality",
+        "expected": [
+            [
+                [
+                    "don't",
+                    "let",
+                    "cat",
+                    "hat"
+                ],
+                1
+            ]
+        ]
+    },
+    {
+        "tweets_file": "data/LibDems.json",
+        "n": 2,
+        "min_count": 100,
+        "purpose": "min count ngrams example",
+        "expected": [
+            [
+                [
+                    "stand",
+                    "up"
+                ],
+                189
+            ],
+            [
+                [
+                    "stop",
+                    "tories"
+                ],
+                189
+            ],
+            [
+                [
+                    "will",
+                    "stand"
+                ],
+                166
+            ],
+            [
+                [
+                    "theresa",
+                    "may"
+                ],
+                125
+            ],
+            [
+                [
+                    "lib",
+                    "dems"
+                ],
+                116
+            ],
+            [
+                [
+                    "can",
+                    "stop"
+                ],
+                104
+            ],
+            [
+                [
+                    "only",
+                    "can"
+                ],
+                100
+            ]
+        ]
+    },
+    {
+        "tweets_file": "data/UKLabour-May-week1.json",
+        "n": 1,
+        "min_count": 30,
+        "purpose": "basic test",
+        "expected": []
+    },
+    {
+        "tweets_file": "data/zero-tweets.json",
+        "n": 1,
+        "min_count": 1,
+        "purpose": "corner cases: list of tweets is empty",
+        "expected": []
+    },
+    {
+        "tweets_file": "data/UKLabour-May-week1.json",
+        "n": 1,
+        "min_count": 150,
+        "purpose": "corner case: no single word occurs at least 150 times.",
+        "expected": []
+    }
+]

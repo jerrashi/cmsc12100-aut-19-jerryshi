@@ -1,0 +1,21 @@
+[
+    {"items": [],
+     "k": 1,
+     "expected": []},
+
+    {"items": ["A"],
+     "k": 1,
+     "expected": [["A", 1]]},
+
+    {"items": ["A", "A"],
+     "k": 1,
+     "expected": [["A", 2]]},
+
+    {"items": ["A", "A"],
+     "k": 1,
+     "expected": [["A", 2]]},
+
+    {"items": ["A", "B", "C", "A", "A", "B", "A", "C", "A", "D"],
+     "k": 3,
+     "expected":  [["A", 5], ["B", 2], ["C", 2]]}
+]

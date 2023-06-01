@@ -1,0 +1,350 @@
+[
+    {
+        "tweets": [
+            {
+                "abridged_text": "the dog a dog"
+            }
+        ],
+        "n": 2,
+        "k": 1,
+        "purpose": "Test Stop word removal and ordering",
+        "expected": [
+            [
+                [
+                    "dog",
+                    "dog"
+                ],
+                1
+            ]
+        ]
+    },
+    {
+        "tweets": [
+            {
+                "abridged_text": "Dog dog"
+            }
+        ],
+        "n": 2,
+        "k": 1,
+        "purpose": "Test handling cases",
+        "expected": [
+            [
+                [
+                    "dog",
+                    "dog"
+                ],
+                1
+            ]
+        ]
+    },
+    {
+        "tweets": [
+            {
+                "abridged_text": "dog, dog; :dog ...dog..."
+            }
+        ],
+        "n": 2,
+        "k": 1,
+        "purpose": "Test punctuation removal",
+        "expected": [
+            [
+                [
+                    "dog",
+                    "dog"
+                ],
+                3
+            ]
+        ]
+    },
+    {
+        "tweets": [
+            {
+                "abridged_text": "@Dog dog http://dog.html"
+            }
+        ],
+        "n": 2,
+        "k": 1,
+        "purpose": "Test to see if prefix filtering is done properly",
+        "expected": []
+    },
+    {
+        "tweets": [
+            {
+                "abridged_text": "dog's are good"
+            }
+        ],
+        "n": 2,
+        "k": 1,
+        "purpose": "check mid-word punctuation remains",
+        "expected": [
+            [
+                [
+                    "are",
+                    "good"
+                ],
+                1
+            ]
+        ]
+    },
+    {
+        "tweets": [
+            {
+                "abridged_text": "dog ...... dog ;;;; dog :;\" "
+            }
+        ],
+        "n": 2,
+        "k": 1,
+        "purpose": "Empty string removal",
+        "expected": [
+            [
+                [
+                    "dog",
+                    "dog"
+                ],
+                2
+            ]
+        ]
+    },
+    {
+        "tweets": [
+            {
+                "abridged_text": "the cat in the hat"
+            },
+            {
+                "abridged_text": "don't let the cat on the hat"
+            },
+            {
+                "abridged_text": "the cat's hat"
+            },
+            {
+                "abridged_text": "the hat cat"
+            }
+        ],
+        "n": 2,
+        "k": 1,
+        "purpose": " Test to end-to-end functionality",
+        "expected": [
+            [
+                [
+                    "cat",
+                    "hat"
+                ],
+                2
+            ]
+        ]
+    },
+    {
+        "tweets": [
+            {
+                "abridged_text": "the cat in the hat"
+            },
+            {
+                "abridged_text": "don't let the cat on the hat"
+            },
+            {
+                "abridged_text": "the cat's hat"
+            },
+            {
+                "abridged_text": "the hat cat"
+            }
+        ],
+        "n": 3,
+        "k": 1,
+        "purpose": " Test to end-to-end functionality",
+        "expected": [
+            [
+                [
+                    "don't",
+                    "let",
+                    "cat"
+                ],
+                1
+            ]
+        ]
+    },
+    {
+        "tweets": [
+            {
+                "abridged_text": "the cat in the hat"
+            },
+            {
+                "abridged_text": "don't let the cat on the hat"
+            },
+            {
+                "abridged_text": "the cat's hat"
+            },
+            {
+                "abridged_text": "the hat cat"
+            }
+        ],
+        "n": 4,
+        "k": 1,
+        "purpose": " Test to end-to-end functionality",
+        "expected": [
+            [
+                [
+                    "don't",
+                    "let",
+                    "cat",
+                    "hat"
+                ],
+                1
+            ]
+        ]
+    },
+    {
+        "tweets_file": "data/theSNP.json",
+        "n": 2,
+        "k": 3,
+        "purpose": "top k ngrams example",
+        "expected": [
+            [
+                [
+                    "nicola",
+                    "sturgeon"
+                ],
+                82
+            ],
+            [
+                [
+                    "read",
+                    "more"
+                ],
+                69
+            ],
+            [
+                [
+                    "stand",
+                    "up"
+                ],
+                55
+            ]
+        ]
+    },
+    {
+        "tweets_file": "data/UKLabour-May-week1.json",
+        "n": 1,
+        "k": 3,
+        "purpose": "basic test",
+        "expected": [
+            [
+                [
+                    "labour"
+                ],
+                29
+            ],
+            [
+                [
+                    "our"
+                ],
+                29
+            ],
+            [
+                [
+                    "will"
+                ],
+                22
+            ]
+        ]
+    },
+    {
+        "tweets_file": "data/UKLabour-May-week1.json",
+        "n": 3,
+        "k": 3,
+        "purpose": "basic test",
+        "expected": [
+            [
+                [
+                    "calculator",
+                    "see",
+                    "how"
+                ],
+                6
+            ],
+            [
+                [
+                    "many",
+                    "not",
+                    "few"
+                ],
+                6
+            ],
+            [
+                [
+                    "all",
+                    "danger",
+                    "put"
+                ],
+                5
+            ]
+        ]
+    },
+    {
+        "tweets_file": "data/zero-tweets.json",
+        "n": 1,
+        "k": 1,
+        "purpose": "corner cases: list of tweets is empty",
+        "expected": []
+    },
+    {
+        "tweets_file": "data/UKLabour-May-week1.json",
+        "n": 1,
+        "k": 0,
+        "purpose": "corner cases: k is 0",
+        "expected": []
+    },
+    {
+        "tweets_file": "data/UKLabour-May-week1.json",
+        "n": 1,
+        "k": 3,
+        "purpose": "corner case: check empty sets for stop words and stop prefixes.",
+        "expected": [
+            [
+                [
+                    "labour"
+                ],
+                29
+            ],
+            [
+                [
+                    "our"
+                ],
+                29
+            ],
+            [
+                [
+                    "will"
+                ],
+                22
+            ]
+        ]
+    },
+    {
+        "tweets_file": "data/entities-only.json",
+        "n": 1,
+        "k": 3,
+        "purpose": "corner case: file contains a single tweet that contains only hashtags,\nurls, and user_mentions.  Preprocessing the text will\nyield an empty list of ngrams",
+        "expected": []
+    },
+    {
+        "tweets_file": "data/syn-0.json",
+        "n": 1,
+        "k": 1,
+        "purpose": "corner case: check whether punctuation is stripped properly.\nfile contains a single synthetic tweet:   'Hillary $$Hillary Hillary. hillary ..Hillary..'",
+        "expected": [
+            [
+                [
+                    "hillary"
+                ],
+                5
+            ]
+        ]
+    },
+    {
+        "tweets_file": "data/syn-1.json",
+        "n": 2,
+        "k": 1,
+        "purpose": "corner case: check whether tweets that have fewer than\nn words are handled properly.\nfile contains a single synthetic tweet:   'hillary'",
+        "expected": []
+    }
+]

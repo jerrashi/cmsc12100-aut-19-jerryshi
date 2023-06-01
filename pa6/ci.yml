@@ -1,0 +1,13 @@
+compile_and_lint:
+    stage: build
+    script:
+        - python3 -m py_compile pa6/*.py
+        - pylint -E pa6/traffic_stops.py
+
+run_tests:
+    stage: test
+    script:
+        - cd pa6/data && ./get_files.sh
+        - cd .. && py.test -v
+    after_script:
+        - cd pa6/ && ../common/grader.py
