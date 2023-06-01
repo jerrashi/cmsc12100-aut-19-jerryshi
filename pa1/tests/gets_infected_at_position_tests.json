@@ -1,0 +1,198 @@
+[
+    {
+        "seed": 20170217,
+        "city": [
+            "I1",
+            "S",
+            "S"
+        ],
+        "position": 1,
+        "infection_rate": 0.5,
+        "expected": true,
+        "num_rand_calls": 1,
+        "purpose": "Left neighbor is infected, susceptible person gets infected"
+    },
+    {
+        "seed": 20170218,
+        "city": [
+            "I1",
+            "S",
+            "S"
+        ],
+        "position": 1,
+        "infection_rate": 0.65,
+        "expected": true,
+        "num_rand_calls": 1,
+        "purpose": "Left neighbor is infected, susceptible person gets infected. Different seed"
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "I1",
+            "S",
+            "S"
+        ],
+        "position": 1,
+        "infection_rate": 0.2,
+        "expected": false,
+        "num_rand_calls": 1,
+        "purpose": "Left neighbor is infected, susceptible person does not get infected"
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "S",
+            "S",
+            "I0"
+        ],
+        "position": 1,
+        "infection_rate": 0.5,
+        "expected": true,
+        "num_rand_calls": 1,
+        "purpose": "Right neighbor is infected, susceptible person gets infected"
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "S",
+            "S",
+            "I0"
+        ],
+        "position": 1,
+        "infection_rate": 0.2,
+        "expected": false,
+        "num_rand_calls": 1,
+        "purpose": "Right neighbor is infected, susceptible person does not get infected"
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "I20",
+            "S",
+            "I0"
+        ],
+        "position": 1,
+        "infection_rate": 1.0,
+        "expected": true,
+        "num_rand_calls": 1,
+        "purpose": "Both neighbors are infected, susceptible person gets infected"
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "I20",
+            "S",
+            "I0"
+        ],
+        "position": 1,
+        "infection_rate": 0.2,
+        "expected": false,
+        "num_rand_calls": 1,
+        "purpose": "Both neighbors are infected, susceptible person does not get infected"
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "R",
+            "S",
+            "R"
+        ],
+        "position": 1,
+        "infection_rate": 1.0,
+        "expected": false,
+        "num_rand_calls": 0,
+        "purpose": "Neither neighbor is infected, susceptible person does not get infected. No calls to random.random()"
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "I1",
+            "S",
+            "S",
+            "S"
+        ],
+        "position": 2,
+        "infection_rate": 1.0,
+        "expected": false,
+        "num_rand_calls": 0,
+        "purpose": "Neither neighbor is infected, susceptible person does not get infected. No calls to random.random()"
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "S",
+            "S",
+            "I0"
+        ],
+        "position": 0,
+        "infection_rate": 1.0,
+        "expected": false,
+        "num_rand_calls": 0,
+        "purpose": "Right neighbor only, susceptible person does not get infected. No calls to random.random()"
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "S",
+            "I1500",
+            "I0"
+        ],
+        "position": 0,
+        "infection_rate": 0.5,
+        "expected": true,
+        "num_rand_calls": 1,
+        "purpose": "Right neighbor only, susceptible person gets infected."
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "S",
+            "I1500",
+            "I0"
+        ],
+        "position": 0,
+        "infection_rate": 0.2,
+        "expected": false,
+        "num_rand_calls": 1,
+        "purpose": "Right neighbor only, susceptible person does not get infected."
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "I1",
+            "S",
+            "S"
+        ],
+        "position": 2,
+        "infection_rate": 0.5,
+        "expected": false,
+        "num_rand_calls": 0,
+        "purpose": "Left neighbor only, susceptible person does not get infected. No calls to random.random()."
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "I1",
+            "I1500",
+            "S"
+        ],
+        "position": 2,
+        "infection_rate": 0.5,
+        "expected": true,
+        "num_rand_calls": 1,
+        "purpose": "Left neighbor only, susceptible person gets infected."
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "I1",
+            "I1500",
+            "S"
+        ],
+        "position": 2,
+        "infection_rate": 0.2,
+        "expected": false,
+        "num_rand_calls": 1,
+        "purpose": "Left neighbor only, susceptible person does not get infected."
+    }
+]

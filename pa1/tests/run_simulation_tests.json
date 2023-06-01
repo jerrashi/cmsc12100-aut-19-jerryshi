@@ -1,0 +1,53 @@
+[
+    {"starting_city": ["S", "S", "I0"], 
+     "random_seed": 20170217, 
+     "max_num_days": 10, 
+     "infection_rate": 0.4, 
+     "days_contagious":3,
+     "expected": [["S", "R", "R"], 6],
+     "purpose": "One of two susceptible persons gets infected. Second stopping condition."},
+
+    {"starting_city": ["S", "S", "I0"], 
+     "random_seed": 20170218, 
+     "max_num_days": 10, 
+     "infection_rate": 0.4, 
+     "days_contagious":2,
+     "expected": [["S", "S", "R"], 3],
+     "purpose": "Different seed."},
+
+
+    {"starting_city": ["S", "S", "I0"], 
+     "random_seed": 20170217, 
+     "max_num_days": 100, 
+     "infection_rate": 0.2, 
+     "days_contagious": 1,
+     "expected": [["S", "S", "R"], 2],
+     "purpose": "Neither susceptible person gets infected. Second stopping condition."},
+
+    {"starting_city": ["R", "S", "S"], 
+     "random_seed": 20170217, 
+     "max_num_days": 10, 
+     "infection_rate": 1.0, 
+     "days_contagious": 2,
+     "expected": [["R", "S", "S"], 1],
+     "purpose": "No changes.  Second stopping condition."},
+
+    {"starting_city": ["R", "I0", "S", "S", "S", "S", "S"], 
+     "random_seed": 20170217, 
+     "max_num_days": 3, 
+     "infection_rate": 1.0, 
+     "days_contagious": 10,
+     "expected": [["R", "I3", "I2", "I1", "I0", "S", "S"], 3],
+     "purpose": "First stopping condition"},
+
+    {"starting_city": ["I1", "R", "S", "S", "S", "R", "S", "S", "S", "I1", "I1", "R", "S", "S", "S", "R", "S", "S", "S", "I1", "S", "S", "S", "I1", "R", "S", "S", "S", "R", "S", "S", "S", "I1", "I1", "R", "S", "S", "S", "R", "S", "S", "S", "I1", "S", "S", "S", "S", "S", "S"], 
+     "random_seed": 20170218, 
+     "max_num_days": 20, 
+     "infection_rate": 0.4, 
+     "days_contagious": 2, 
+     "expected": [["R", "R", "S", "S", "S", "R", "S", "S", "S", "R", "R", "R", "S", "S", "S", "R", "S", "S", "S", "R", "R", "R", "R", "R", "R", "S", "S", "S", "R", "S", "S", "R", "R", "R", "R", "S", "S", "S", "R", "S", "S", "S", "R", "R", "S", "S", "S", "S", "S"], 6],
+     "purpose": "Large city with medium infection rate. Second stopping condition."}
+
+
+
+]

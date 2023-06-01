@@ -1,0 +1,283 @@
+[
+    {
+        "seed": 20170217,
+        "city": [
+            "I1",
+            "S",
+            "S"
+        ],
+        "position": 1,
+        "infection_rate": 0.5,
+        "days_contagious": 3,
+        "expected": "I0",
+        "num-rand_calls": 1,
+        "purpose": "Left neighbor is infected, susceptible person gets infected"
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "I1",
+            "S",
+            "S"
+        ],
+        "position": 1,
+        "infection_rate": 0.2,
+        "days_contagious": 3,
+        "expected": "S",
+        "num-rand_calls": 1,
+        "purpose": "Left neighbor is infected, susceptible person does not get infected"
+    },
+    {
+        "seed": 20170218,
+        "city": [
+            "I1",
+            "S",
+            "S"
+        ],
+        "position": 1,
+        "infection_rate": 0.5,
+        "days_contagious": 3,
+        "expected": "S",
+        "num-rand_calls": 1,
+        "purpose": "Left neighbor is infected, susceptible person does not get infected. Different seed"
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "S",
+            "S",
+            "I0"
+        ],
+        "position": 1,
+        "infection_rate": 0.5,
+        "days_contagious": 3,
+        "expected": "I0",
+        "num-rand_calls": 1,
+        "purpose": "Right neighbor is infected, susceptible person gets infected"
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "S",
+            "S",
+            "I0"
+        ],
+        "position": 1,
+        "infection_rate": 0.2,
+        "days_contagious": 3,
+        "expected": "S",
+        "num-rand_calls": 1,
+        "purpose": "Right neighbor is infected, susceptible person does not get infected"
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "I20",
+            "S",
+            "I0"
+        ],
+        "position": 1,
+        "infection_rate": 1.0,
+        "days_contagious": 3,
+        "expected": "I0",
+        "num-rand_calls": 1,
+        "purpose": "Both neighbors are infected, susceptible person gets infected"
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "I20",
+            "S",
+            "I0"
+        ],
+        "position": 1,
+        "infection_rate": 0.2,
+        "days_contagious": 3,
+        "expected": "S",
+        "num-rand_calls": 1,
+        "purpose": "Both neighbors are infected, susceptible person does not get infected"
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "R",
+            "S",
+            "R"
+        ],
+        "position": 1,
+        "infection_rate": 1.0,
+        "days_contagious": 3,
+        "expected": "S",
+        "num-rand_calls": 0,
+        "purpose": "Neither neighbor is infected, susceptible person does not get infected. No calls to random.random()"
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "I1",
+            "S",
+            "S",
+            "S"
+        ],
+        "position": 2,
+        "infection_rate": 1.0,
+        "days_contagious": 3,
+        "expected": "S",
+        "num-rand_calls": 0,
+        "purpose": "Neither neighbor is infected, susceptible person does not get infected. No calls to random.random()"
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "S",
+            "S",
+            "I0"
+        ],
+        "position": 0,
+        "infection_rate": 1.0,
+        "days_contagious": 3,
+        "expected": "S",
+        "num-rand_calls": 0,
+        "purpose": "Right neighbor only, susceptible person does not get infected. No calls to random.random()"
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "S",
+            "I1500",
+            "I0"
+        ],
+        "position": 0,
+        "infection_rate": 0.5,
+        "days_contagious": 3,
+        "expected": "I0",
+        "num-rand_calls": 1,
+        "purpose": "Right neighbor only, susceptible person gets infected."
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "S",
+            "I1500",
+            "I0"
+        ],
+        "position": 0,
+        "infection_rate": 0.2,
+        "days_contagious": 3,
+        "expected": "S",
+        "num-rand_calls": 1,
+        "purpose": "Right neighbor only, susceptible person does not get infected."
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "I1",
+            "R",
+            "S"
+        ],
+        "position": 2,
+        "infection_rate": 0.5,
+        "days_contagious": 3,
+        "expected": "S",
+        "num-rand_calls": 0,
+        "purpose": "Left neighbor only, susceptible person does not get infected. No calls to random.random()"
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "I1",
+            "I1500",
+            "S"
+        ],
+        "position": 2,
+        "infection_rate": 0.5,
+        "days_contagious": 3,
+        "expected": "I0",
+        "num-rand_calls": 1,
+        "purpose": "Left neighbor only, susceptible person gets infected."
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "I1",
+            "I1500",
+            "S"
+        ],
+        "position": 2,
+        "infection_rate": 0.2,
+        "days_contagious": 3,
+        "expected": "S",
+        "num-rand_calls": 1,
+        "purpose": "Left neighbor only, susceptible person does not get infected."
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "I1",
+            "I1500",
+            "S"
+        ],
+        "position": 0,
+        "infection_rate": 0.2,
+        "days_contagious": 3,
+        "expected": "I2",
+        "num-rand_calls": 0,
+        "purpose": "Infected should be increment. No calls to random.random()."
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "I2",
+            "I1500",
+            "S"
+        ],
+        "position": 0,
+        "infection_rate": 0.2,
+        "days_contagious": 3,
+        "expected": "R",
+        "num-rand_calls": 0,
+        "purpose": "Infected should be converted to recovered. No calls to random.random()."
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "I2",
+            "I1500",
+            "S"
+        ],
+        "position": 1,
+        "infection_rate": 0.2,
+        "days_contagious": 2000,
+        "expected": "I1501",
+        "num-rand_calls": 0,
+        "purpose": "Infected should be incremented. Large number of days contagious. No calls to random.random()."
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "I2",
+            "I1500",
+            "S"
+        ],
+        "position": 1,
+        "infection_rate": 0.2,
+        "days_contagious": 1501,
+        "expected": "R",
+        "num-rand_calls": 0,
+        "purpose": "Infected person recovers. Large number of days contagious. No calls to random.random()."
+    },
+    {
+        "seed": 20170217,
+        "city": [
+            "I2",
+            "I1500",
+            "R"
+        ],
+        "position": 2,
+        "infection_rate": 0.2,
+        "days_contagious": 2000,
+        "expected": "R",
+        "num-rand_calls": 0,
+        "purpose": "Recovered, no change. No calls to random.random()."
+    }
+]
