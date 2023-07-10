@@ -29,7 +29,7 @@ Sample:
 
 import os
 import sys
-import click
+# import click
 import utility
 
 # DO NOT REMOVE THE COMMENT BELOW
@@ -53,58 +53,60 @@ def is_satisfied(grid, R, location, simil_threshold, occup_threshold):
 
 	assert utility.is_grid(grid)
 	   
-	assert grid[location[0]][location[1]] != '0'
+	assert grid[location[0]][location[1]] != 'O'
 
 	resident = grid[location[0]][location[1]]
 
 	if simil_score(grid, R, location) < simil_threshold:
-	   return False
+		return False
 	elif occupancy_score(grid, R, location) < occup_threshold:
-	   return False
+		return False
 	else:
-	   return True
+		return True
 	
-def best_house(grid, location, R, occup_threshold, simil_threshold, opens):
+def best_satisfactory_house(grid, location, R, simil_threshold, occup_threshold, opens):
 	'''
 	This function looks at a list of open houses and, if there are house(s) that fulfill
 	a resident's requirements, it returns the best satisfactory house.
 
 	Inputs
 		grid: (list of lists of strings) the grid
+		location: (tuple) row and column coordinates of a resident
 	   	R: (int) radius for the neighborhood
 	   	simil_threshold: (float) Similarity threshold
 	   	occup_threshold: (float) Occupancy threshold
-	   	max_steps: (int) maximum number of steps to do
 	   	opens: (list of tuples) a list of open locations
 	Returns
 		best_house: (tuple) position of the best house in the grid
-		besthouseexists: (Boolean) True if a suitable house exists,  False  if not
+		best_house_exists: (Boolean) True if a suitable house exists,  False  if not
 	'''
-	satisfied_opens = []
+	satisfactory_open_houses = []
 	(i, j) = location
 	original_value = grid[i][j]
-	besthouseexists = False
+	grid[i][j] = 'O'
+	best_house_exists = False
 
-	for openlocation in opens:
-		(openrow, opencol) = openlocation
-		grid[openrow][opencol] = original_value
-		grid[i][j] = 'O'
-		if is_satisfied(grid, R, (openrow, opencol), simil_threshold, occup_threshold) == True:
-			satisfied_opens.append(openlocation)
-			grid[openrow][opencol] = 'O'
-			grid[i][j] = original_value
-		if len(satisfied_opens) > 1:
-			minimum = len(grid) * 2
-			satisfied_opens.reverse()
-			for poss_mins in satisfied_opens:
-				if find_distance(location, poss_mins) < minimum:
-					minimum = find_distance(location, poss_mins)
-					besthouse = poss_mins
-					besthouseexists = True
+	for open_location in opens:
+		(open_row, open_col) = open_location
+		grid[open_row][open_col] = original_value
+		if is_satisfied(grid, R, (open_row, open_col), simil_threshold, occup_threshold):
+			satisfactory_open_houses.append(open_location)
+		grid[open_row][open_col] = 'O'
 
-	return (besthouse, besthouseexists)
+	if len(satisfactory_open_houses) > 1:
+		minimum_distance = len(grid) * 2
+		for open_house in satisfactory_open_houses:
+			distance = find_distance(location, open_house)
+			if distance < minimum_distance:
+				minimum_distance = distance
+				best_house = open_house
+				best_house_exists = True
+	
+	grid[i][j] = original_value
 
-def advance_position(grid, location, R, occup_threshold, simil_threshold, opens):
+	return (best_house, best_house_exists)
+
+def advance_position(grid, location, R, simil_threshold, occup_threshold, opens):
 	'''
 	This function looks at a single resident and if there is a swap that fulfills all
 	the resident's requirements,  it performs the swap.
@@ -117,7 +119,7 @@ def advance_position(grid, location, R, occup_threshold, simil_threshold, opens)
 	   	max_steps: (int) maximum number of steps to do
 	   	opens: (list of tuples) a list of open locations
 	Returns
-		grid: (lists of lists of strings) the grid, possible altered
+		grid: (lists of lists of strings) the grid, possibly altered
 		moved: (Boolean) True if a swap was performed,  False  if not
 	'''
 	
@@ -127,13 +129,13 @@ def advance_position(grid, location, R, occup_threshold, simil_threshold, opens)
 	original_value = grid[i][j]
 	if not is_satisfied(grid, R, location, simil_threshold, occup_threshold):
 		if len(opens) > 1:
-			(besthouse, besthouseexists) = best_house(grid, location, R, occup_threshold, simil_threshold, opens)
-			if besthouseexists == True:
-				(movetorow, movetocol) = besthouse
-				grid[movetorow][movetocol] = original_value
+			(best_house, best_house_exists) = best_satisfactory_house(grid, location, R, simil_threshold, occup_threshold, opens)
+			if best_house_exists:
+				(move_to_row, move_to_col) = best_house
+				grid[move_to_row][move_to_col] = original_value
 				grid[i][j] = 'O'
 				opens.append((i,j))
-				opens.remove((movetorow, movetocol))
+				opens.remove((move_to_row, move_to_col))
 				moved =True
 	return [grid, moved]
 
@@ -162,9 +164,11 @@ def do_simulation(grid, R, simil_threshold, occup_threshold, max_steps, opens):
 			for j in range(0,len(grid)):
 				if grid[i][j] != 'O':
 					location = (i,j)
-					[grid, moved] = advance_position(grid, location, R, occup_threshold, simil_threshold, opens)
+					[grid, moved] = advance_position(grid, location, R, simil_threshold, occup_threshold, opens)
 					if moved is True:
 						step_relocations += 1
+		
+		# End simulation early if no one moved in the last step
 		if step_relocations == 0:
 			break
 
